@@ -24,12 +24,19 @@ public class Enemy : MonoBehaviour {
     public WeaponsManager WM;
 
     void Start() {
+        if (GameObject.FindGameObjectWithTag("Player")== null)
+            return;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = this.GetComponent<Rigidbody>();
         sprite = this.GetComponent<SpriteRenderer>();
     }
 
     void Update() {        
+
+        if(player == null)
+        {
+            return;
+        }
 
         followDelay -= Time.deltaTime;
 
@@ -81,7 +88,7 @@ public class Enemy : MonoBehaviour {
             //GameObject.FindGameObjectWithTag("text1").GetComponent<reloj>().updatenumenemies();
             //}
             //WM.Enemies.Remove(gameObject.GetComponent<Enemy>());
-            GameObject newCoin = Instantiate(coin, transform.position, Quaternion.Euler(90, 0, 0));
+            GameObject newCoin = Instantiate(coin, new Vector3 (transform.position.x, 0.2f,transform.position.z), Quaternion.Euler(90, 0, 0));
             newCoin.transform.parent = GameObject.FindGameObjectWithTag("Coins").transform;
             Destroy(gameObject,0.10f);
         }
@@ -92,4 +99,11 @@ public class Enemy : MonoBehaviour {
         this.damage = damage;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<WeaponsManager>().taked(damage);
+        }
+    }
 }

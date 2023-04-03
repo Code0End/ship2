@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WeaponsManager : MonoBehaviour
 {
+    public float HP = 100f;
+    public Camera Cam;
+    public TMP_Text Centertxt;
+
+    public cam_respawn CR;
+
     public bool CisActive;
     public float CfireRate;
     private float timeSinceLastFire = 0f;
@@ -151,6 +158,27 @@ public class WeaponsManager : MonoBehaviour
         a.Play(newState);
 
         currentState = newState;
+    }
+
+    public void taked(float d)
+    {
+        HP = HP - d;
+        if (HP <= 0)
+        {
+            //ass.clip = gothit;
+            //ass.pitch = UnityEngine.Random.Range(0.2f, 0.6f);
+            //ass.Play();
+            //if (GameObject.FindGameObjectWithTag("text1") != null)
+            //{
+            //GameObject.FindGameObjectWithTag("text1").GetComponent<reloj>().updatenumenemies();
+            //}
+            //WM.Enemies.Remove(gameObject.GetComponent<Enemy>());
+            Cam.transform.parent = null;
+            CR.enabled = true;
+            Centertxt.text = "PRESS SPACEBAR TO RESTART";
+            Destroy(gameObject, 0.10f);
+        }
+
     }
 }
 

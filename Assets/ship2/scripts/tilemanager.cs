@@ -26,7 +26,11 @@ public class tilemanager : MonoBehaviour
 
     void Update()
     {
-        
+        if(player == null)
+        {
+            return;
+        }
+
         if (Vector3.Distance(player.position, spawnPos) > spawnDistance)
         {         
             if (activeTiles.Count > numTilesonScreen)
