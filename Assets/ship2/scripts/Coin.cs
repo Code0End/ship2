@@ -11,18 +11,28 @@ public class Coin : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        if (GameObject.FindGameObjectWithTag("Player") == null)
+            return;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update() {
-        if(Vector3.Distance(this.transform.position, player.transform.position) <= range) {
+        if (player == null)
+        {
+            return;
+        }
+        if (Vector3.Distance(this.transform.position, player.transform.position) <= range) {
             isMoving = true;
         }
     }
 
     private void FixedUpdate() {
-        if(isMoving) {
+        if (player == null)
+        {
+            return;
+        }
+        if (isMoving) {
             transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * moveSpeed);
         }
     }

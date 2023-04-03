@@ -63,6 +63,9 @@ public class Enemy : MonoBehaviour {
     }
 
     public void Knockback() {
+        if (player == null)
+            return;
+        
         isMoving = false;
         
         Vector3 direction = (transform.position - player.transform.position).normalized;

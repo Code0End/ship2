@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2421182177261348764}
   - component: {fileID: 8636984375095282916}
   - component: {fileID: 3341047658422013554}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wave
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -125,6 +125,7 @@ MonoBehaviour:
   strenght: 0.2
   coin: {fileID: 655485128217197943, guid: e849ca2408bdb494ab7b48fc0c5c5045, type: 3}
   damage: 20
+  enemySpawner: {fileID: 0}
   hp: 100
   gothit: {fileID: 0}
   WM: {fileID: 0}

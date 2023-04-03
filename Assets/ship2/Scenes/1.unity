@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 159855183}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cannon_n
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,7 +682,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 875688534}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: weapon anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -714,7 +714,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1013621932}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cannon_n
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -950,7 +950,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1377410711}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: weapon anchor c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -985,9 +985,10 @@ GameObject:
   - component: {fileID: 1457045416}
   - component: {fileID: 1457045419}
   - component: {fileID: 1457045420}
-  m_Layer: 0
+  - component: {fileID: 1457045421}
+  m_Layer: 7
   m_Name: Shipsprite
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1119,6 +1120,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 0
     m_RotationOrder: 4
+--- !u!65 &1457045421
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457045415}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64000016, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1527690878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,7 +1176,7 @@ GameObject:
   - component: {fileID: 1673074610}
   m_Layer: 0
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1181,7 +1195,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpawnDelay: 1
   waveSpawnTimer: 3
-  maxEnemies: 0
+  maxEnemies: 20
+  currentEnemies: 0
   enemy: {fileID: 5646171206500313912, guid: bea0c9b878215de4d84f2144527e5625, type: 3}
   cam: {fileID: 1016479799}
 --- !u!4 &1673074611
@@ -1313,7 +1328,7 @@ GameObject:
   - component: {fileID: 1783634927}
   - component: {fileID: 1783634929}
   - component: {fileID: 1783634928}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1421,7 +1436,7 @@ GameObject:
   - component: {fileID: 1971736530}
   - component: {fileID: 1971736529}
   - component: {fileID: 1971736528}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1555,7 +1570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2067244541}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: weapon anchor b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1587,7 +1602,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2123764870}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cannon_n
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1620,7 +1635,7 @@ GameObject:
   - component: {fileID: 2142869297}
   - component: {fileID: 2142869298}
   - component: {fileID: 2142869299}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
