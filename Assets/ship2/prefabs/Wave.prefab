@@ -127,7 +127,8 @@ MonoBehaviour:
   damage: 20
   enemySpawner: {fileID: 0}
   hp: 100
-  gothit: {fileID: 0}
+  ass: {fileID: 0}
+  gothit: {fileID: 8300000, guid: 85387dae1a7aed54b9b5c57f94bf2dea, type: 3}
   WM: {fileID: 0}
 --- !u!54 &8636984375095282916
 Rigidbody:
