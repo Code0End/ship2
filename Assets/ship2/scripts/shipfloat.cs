@@ -5,7 +5,6 @@ using UnityEngine;
 public class shipfloat : MonoBehaviour
 {
     public bool on = true;
-    float speed = 100.0f;
     public AnimationCurve lacurvo;
 
     void Update()
