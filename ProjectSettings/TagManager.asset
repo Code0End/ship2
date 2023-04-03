@@ -8,6 +8,7 @@ TagManager:
   - explosion
   - Coins
   - Spawner
+  - Coin
   layers:
   - Default
   - TransparentFX

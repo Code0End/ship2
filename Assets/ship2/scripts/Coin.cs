@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class Coin : MonoBehaviour {
@@ -8,6 +9,7 @@ public class Coin : MonoBehaviour {
     
     public float range = 5f;
     public float moveSpeed = 2f;
+    public int value =  1;
 
     // Start is called before the first frame update
     void Start() {
@@ -39,7 +41,8 @@ public class Coin : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision) {
         if (collision.collider.CompareTag("Player")) {
-            Debug.Log("Earn XP");
+            GameObject player = collision.gameObject;
+            player.GetComponent<Player>().AddCoin(this.value);
             Destroy(gameObject);
         }
     }

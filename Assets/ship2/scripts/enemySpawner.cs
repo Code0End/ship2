@@ -14,9 +14,12 @@ public class enemySpawner : MonoBehaviour
     public float enemySpawnDelay = 1f;
     // Delay between each wave
     public float waveSpawnTimer = 10f;
-
+    // Control enemies in scene
     public int maxEnemies = 2;
     public int currentEnemies;
+    
+    public float damage = 20f;
+    public float speed = 2f;
 
     public GameObject enemy;
     public Camera cam;
@@ -58,6 +61,10 @@ public class enemySpawner : MonoBehaviour
                 newEnemy = Instantiate(enemy, new Vector3(camPos.x + Random.Range(-15, 15), 0.5f, camPos.z + Random.Range(-15, -30)), Quaternion.Euler(90, 0, 0));
             }
 
+            // Set new Enemy move speed and damage
+            //newEnemy.GetComponent<Enemy>().setDamage(this.damage);
+            //newEnemy.GetComponent<Enemy>().setMoveSpeed(this.speed);
+
             currentEnemies++;
 
             spawnSide = Random.Range(0, 4);
@@ -74,5 +81,13 @@ public class enemySpawner : MonoBehaviour
 
     public void SetMaxEnemies(int enemies) {
         this.maxEnemies = enemies;
+    }
+
+    public void SetDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public void SetSpeed(int speed) {
+        this.speed = speed;
     }
 }

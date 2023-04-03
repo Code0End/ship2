@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 668838639811494817}
   m_Layer: 0
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,8 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29339c2865140545aa897d0ae1c258d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 5
+  range: 10
   moveSpeed: 9.63
+  value: 1
 --- !u!54 &668838639811494817
 Rigidbody:
   m_ObjectHideFlags: 0
