@@ -26,14 +26,14 @@ public class tilemanager : MonoBehaviour
 
     void Update()
     {
-        //moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+        
         if (Vector3.Distance(player.position, spawnPos) > spawnDistance)
-        {
-            SpawnTile();
+        {         
             if (activeTiles.Count > numTilesonScreen)
             {
                 DeleteTile();
             }
+            SpawnTile();
         }
     }
 
