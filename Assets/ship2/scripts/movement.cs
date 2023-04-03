@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class movement : MonoBehaviour
 {
@@ -23,14 +24,29 @@ public class movement : MonoBehaviour
     const string PSE = "es";
     const string PSO = "os";
 
+    public TMP_Text Centertxt;
+    public bool ON = false;
+
     private void Start()
     {
         //animator = GetComponent<Animator>();
         animator = GetComponentInChildren<Animator>();
     }
 
-    void FixedUpdate()
+    private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Centertxt.text = "";
+            ON = true;
+        }
+    }
+
+    void FixedUpdate()
+    {       
+        if (ON == false)       
+            return;
+        
         if (!isMoving)
         {
             input.x = Input.GetAxisRaw("Horizontal");
