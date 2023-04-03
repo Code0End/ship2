@@ -867,7 +867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawnDelay: 1
-  waveSpawnTimer: 2
+  waveSpawnTimer: 3
   enemy: {fileID: 5646171206500313912, guid: bea0c9b878215de4d84f2144527e5625, type: 3}
   cam: {fileID: 1016479799}
 --- !u!4 &1673074611
