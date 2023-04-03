@@ -11,6 +11,7 @@ public class enemySpawner : MonoBehaviour
 
     public float enemySpawnDelay = 1f;
     public float waveSpawnTimer = 10f;
+    public int maxEnemies;
     public GameObject enemy;
     public Camera cam;
 

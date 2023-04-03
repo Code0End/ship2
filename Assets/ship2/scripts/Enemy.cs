@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour {
     public float followDelay;
     public float strenght = 0.5f;
     public GameObject coin;
+    public float damage = 20f;
 
     public float hp = 100f;
     AudioSource ass;
@@ -85,6 +86,10 @@ public class Enemy : MonoBehaviour {
             Destroy(gameObject,0.10f);
         }
         Knockback();
+    }
+
+    public void UpdateDamage(float damage) {
+        this.damage = damage;
     }
 
 }
