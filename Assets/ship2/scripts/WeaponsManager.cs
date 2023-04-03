@@ -8,6 +8,7 @@ public class WeaponsManager : MonoBehaviour
     public float CfireRate;
     private float timeSinceLastFire = 0f;
     public float CturningSpeed;
+    public float Cdamage = 100f;
 
     public GameObject Cpivot;
     public GameObject Cobject;
@@ -18,12 +19,20 @@ public class WeaponsManager : MonoBehaviour
     public float BfireRate;
     private float BtimeSinceLastFire = 0f;
     public float BturningSpeed;
+    public float Bdamage = 35f;
 
     public GameObject Bpivot;
     public GameObject Bobject;
     public GameObject Bbullet;
     public GameObject Bnozzle;
     private GameObject closestEnemy;
+
+    public bool DisActive;
+    public float DturningSpeed;
+    public GameObject Dpivot;
+    public float Ddamage = 20f;
+    public float DfireRate;
+    private float DtimeSinceLastFire = 0f;
 
     const string SHOOTING = "shooting";
     const string BALLISTA_SHOOTING = "ballista_shooting";
@@ -55,22 +64,51 @@ public class WeaponsManager : MonoBehaviour
                 BtimeSinceLastFire = 0f; // Reset the timer
             }
         }
+        if (DisActive == true)
+        {
+            Anchor_turn();
+            DtimeSinceLastFire += Time.deltaTime;
+            if (DtimeSinceLastFire >= DfireRate)
+            {
+                Anchor_fire();
+                DtimeSinceLastFire = 0f; // Reset the timer
+            }
+            if(DtimeSinceLastFire >= 0.1f)
+            {
+                Anchor_stop();
+            }
+        }
     }
 
     public void Cannon_fire()
     {
         ChangeAnimationState(SHOOTING, Canimator);
         GameObject projectile = Instantiate(Cbullet, Cnozzle.transform.position, Cnozzle.transform.rotation);
+        projectile.GetComponent<bullet>().update_damage(Cdamage);
     }
     public void Ballista_fire()
     {
         ChangeAnimationState(BALLISTA_SHOOTING, Banimator);
         GameObject projectile = Instantiate(Bbullet, Bnozzle.transform.position, Bnozzle.transform.rotation);
+        projectile.GetComponent<bullet>().update_damage(Bdamage);
+    }
+    public void Anchor_fire()
+    {
+        Dpivot.GetComponentInChildren<BoxCollider>().isTrigger = false;
+    }
+    public void Anchor_stop()
+    {
+        Dpivot.GetComponentInChildren<BoxCollider>().isTrigger = true;
     }
 
     public void Cannon_turn()
     {
         Cpivot.transform.Rotate(Vector3.up, CturningSpeed * Time.deltaTime);
+    }
+
+    public void Anchor_turn()
+    {
+        Dpivot.transform.Rotate(Vector3.up, DturningSpeed * Time.deltaTime);
     }
 
     public void Ballista_turn()

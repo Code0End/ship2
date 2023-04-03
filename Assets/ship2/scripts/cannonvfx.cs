@@ -18,4 +18,9 @@ public class cannonvfx : MonoBehaviour
             collision.gameObject.GetComponent<Enemy>().taked(damage);
         }
     }
+
+    public void update_damage(float d)
+    {
+        damage = d;
+    }
 }

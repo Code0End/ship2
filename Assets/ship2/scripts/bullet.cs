@@ -27,10 +27,6 @@ public class bullet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else
-        {
-            //la ancla que circula el barco va aqui xd
-        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -40,6 +36,7 @@ public class bullet : MonoBehaviour
             if (type == 1)
             {
                 GameObject vfx_exp = Instantiate(explosion, new Vector3(transform.position.x, 0.8f, transform.position.z), transform.rotation);
+                vfx_exp.GetComponent<cannonvfx>().update_damage(damage);
                 Destroy(gameObject);
             }
             if(type == 2)
@@ -52,5 +49,10 @@ public class bullet : MonoBehaviour
                 collision.gameObject.GetComponent<Enemy>().taked(damage);
             }
         }       
+    }
+
+    public void update_damage(float d)
+    {
+        damage = d;
     }
 }
