@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour {
     public float strenght = 0.5f;
     public GameObject coin;
     public float damage = 20f;
+    public enemySpawner enemySpawner;
 
     public float hp = 100f;
     AudioSource ass;
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour {
 
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        enemySpawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<enemySpawner>();
         rb = this.GetComponent<Rigidbody>();
         sprite = this.GetComponent<SpriteRenderer>();
     }
@@ -84,6 +86,7 @@ public class Enemy : MonoBehaviour {
             GameObject newCoin = Instantiate(coin, transform.position, Quaternion.Euler(90, 0, 0));
             newCoin.transform.parent = GameObject.FindGameObjectWithTag("Coins").transform;
             Destroy(gameObject,0.10f);
+            enemySpawner.currentEnemies--;
         }
         Knockback();
     }
