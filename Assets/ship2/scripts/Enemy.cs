@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour {
     public float moveSpeed;
     public float followDelay;
     public float strenght = 0.5f;
+    public GameObject coin;
 
     public float hp = 100f;
     AudioSource ass;
@@ -42,9 +43,6 @@ public class Enemy : MonoBehaviour {
             sprite.flipX = false;
         }
 
-        if (Input.GetKey(KeyCode.Q)) {
-            Knockback();
-        }
     }
 
     private void FixedUpdate() {
@@ -82,8 +80,11 @@ public class Enemy : MonoBehaviour {
             //GameObject.FindGameObjectWithTag("text1").GetComponent<reloj>().updatenumenemies();
             //}
             //WM.Enemies.Remove(gameObject.GetComponent<Enemy>());
+            GameObject newCoin = Instantiate(coin, transform.position, Quaternion.Euler(90, 0, 0));
+            newCoin.transform.parent = GameObject.FindGameObjectWithTag("Coins").transform;
             Destroy(gameObject,0.10f);
         }
+        Knockback();
     }
 
 }

@@ -123,6 +123,10 @@ MonoBehaviour:
   moveSpeed: 2
   followDelay: 2
   strenght: 0.2
+  coin: {fileID: 655485128217197943, guid: e849ca2408bdb494ab7b48fc0c5c5045, type: 3}
+  hp: 100
+  gothit: {fileID: 0}
+  WM: {fileID: 0}
 --- !u!54 &8636984375095282916
 Rigidbody:
   m_ObjectHideFlags: 0
