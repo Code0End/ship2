@@ -15,13 +15,19 @@ public class Enemy : MonoBehaviour {
     public float followDelay;
     public float strenght = 0.5f;
 
+    public float hp = 100f;
+    AudioSource ass;
+    public AudioClip gothit;
+
+    public WeaponsManager WM;
+
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = this.GetComponent<Rigidbody>();
         sprite = this.GetComponent<SpriteRenderer>();
     }
 
-    void Update() {
+    void Update() {        
 
         followDelay -= Time.deltaTime;
 
@@ -60,6 +66,24 @@ public class Enemy : MonoBehaviour {
         yield return new WaitForSeconds(0.1f);
         rb.velocity = Vector3.zero;
         isMoving = true;
+    }
+
+    public void taked(float d)
+    {
+        hp = hp - d;
+        if (hp <= 0)
+        {
+            //ass.clip = gothit;
+            //ass.pitch = UnityEngine.Random.Range(0.2f, 0.6f);
+            //ass.Play();
+            //Debug.Log("DEATH");
+            //if (GameObject.FindGameObjectWithTag("text1") != null)
+            //{
+            //GameObject.FindGameObjectWithTag("text1").GetComponent<reloj>().updatenumenemies();
+            //}
+            //WM.Enemies.Remove(gameObject.GetComponent<Enemy>());
+            Destroy(gameObject,0.10f);
+        }
     }
 
 }
