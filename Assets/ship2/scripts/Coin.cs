@@ -7,7 +7,7 @@ public class Coin : MonoBehaviour {
     private GameObject player;
     private bool isMoving = false;
     
-    public float range = 5f;
+    public float range = 0.1f;
     public float moveSpeed = 2f;
 
     // Start is called before the first frame update

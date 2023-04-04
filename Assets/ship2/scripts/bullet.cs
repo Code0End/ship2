@@ -36,7 +36,7 @@ public class bullet : MonoBehaviour
             if (type == 1)
             {
                 GameObject vfx_exp = Instantiate(explosion, new Vector3(transform.position.x, 0.8f, transform.position.z), transform.rotation);
-                vfx_exp.GetComponent<cannonvfx>().update_damage(damage);
+                vfx_exp.GetComponentInChildren<cannonvfx>().update_damage(damage);
                 Destroy(gameObject);
             }
             if(type == 2)

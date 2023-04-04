@@ -12,6 +12,8 @@ public class WeaponsManager : MonoBehaviour
     public Image healthbar;
     public Image XPbar;
 
+    public Player Preference;
+
     public cam_respawn CR;
 
     public bool CisActive;
@@ -83,7 +85,7 @@ public class WeaponsManager : MonoBehaviour
                 Anchor_fire();
                 DtimeSinceLastFire = 0f; // Reset the timer
             }
-            if(DtimeSinceLastFire >= 0.05f)
+            if (DtimeSinceLastFire >= 0.05f)
             {
                 Anchor_stop();
             }
@@ -153,40 +155,64 @@ public class WeaponsManager : MonoBehaviour
     {
         Dpivot.SetActive(true);
         DisActive = true;
+        Preference.anchor_a = false;
+        Preference.upgrades_off();
     }
 
     public void set_ballista_active()
     {
         Bpivot.SetActive(true);
         BisActive = true;
+        Preference.ballista_a = false;
+        Preference.upgrades_off();
     }
 
-    public void upgrade_cdamage(float u, int t)
-    {
-        if(t == 1)        
+    public void upgrade_cdamage(float u)
+    {      
             Cdamage += u;
-        if (t == 2)
-            Bdamage += u;
-        if (t == 3)
-            Ddamage += u;
+            Preference.upgrades_off();
+    }
+    public void upgrade_bdamage(float u)
+    {
+        Bdamage += u;
+        Preference.upgrades_off();
+    }
+    public void upgrade_ddamage(float u)
+    {
+        Ddamage += u;
+        Preference.upgrades_off();
     }
 
-    public void upgrade_rate(float u, int t)
+    public void upgrade_Crate(float u)
     {
-        if (t == 1)
-            CfireRate += u;
-        if (t == 2)
-            BfireRate += u;
-        if (t == 3)
-            DfireRate += u;
+        CfireRate -= u;
+        Preference.upgrades_off();
+    }
+    public void upgrade_Brate(float u)
+    {
+        BfireRate -= u;
+        Preference.upgrades_off();
+    }
+    public void upgrade_Drate(float u)
+    {
+        if (DfireRate - u <= 0.1f)
+            Preference.upgrades_off();
+        else
+        {
+            DfireRate -= u;
+            Preference.upgrades_off();
+        }
     }
 
-    public void upgrade_turn(float u, int t)
+    public void upgrade_Cturn(float u)
     {
-        if (t == 1)
-            CturningSpeed += u;
-        if (t == 3)
-            DturningSpeed += u;
+        CturningSpeed += u;
+        Preference.upgrades_off();
+    }
+    public void upgrade_Dturn(float u)
+    {
+        DturningSpeed -= u;
+        Preference.upgrades_off();
     }
 
     void ChangeAnimationState(string newState, Animator a)

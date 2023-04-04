@@ -91,8 +91,8 @@ public class Enemy : MonoBehaviour {
 
             GameObject newCoin = Instantiate(coin, new Vector3 (transform.position.x, 0.2f,transform.position.z), Quaternion.Euler(90, 0, 0));
             newCoin.transform.parent = GameObject.FindGameObjectWithTag("Coins").transform;
-            Destroy(gameObject,0.10f);
             enemySpawner.currentEnemies--;
+            Destroy(gameObject,0.10f);
         }
         Knockback();
     }
