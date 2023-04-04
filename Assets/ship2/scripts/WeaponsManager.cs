@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class WeaponsManager : MonoBehaviour
 {
     public float HP = 100f;
     public Camera Cam;
     public TMP_Text Centertxt;
+    public Image healthbar;
+    public Image XPbar;
 
     public cam_respawn CR;
 
@@ -80,7 +83,7 @@ public class WeaponsManager : MonoBehaviour
                 Anchor_fire();
                 DtimeSinceLastFire = 0f; // Reset the timer
             }
-            if(DtimeSinceLastFire >= 0.1f)
+            if(DtimeSinceLastFire >= 0.05f)
             {
                 Anchor_stop();
             }
@@ -146,9 +149,44 @@ public class WeaponsManager : MonoBehaviour
         }
     }
 
-    public void setA()
+    public void set_anchor_active()
     {
-        this.CisActive = true;
+        Dpivot.SetActive(true);
+        DisActive = true;
+    }
+
+    public void set_ballista_active()
+    {
+        Bpivot.SetActive(true);
+        BisActive = true;
+    }
+
+    public void upgrade_cdamage(float u, int t)
+    {
+        if(t == 1)        
+            Cdamage += u;
+        if (t == 2)
+            Bdamage += u;
+        if (t == 3)
+            Ddamage += u;
+    }
+
+    public void upgrade_rate(float u, int t)
+    {
+        if (t == 1)
+            CfireRate += u;
+        if (t == 2)
+            BfireRate += u;
+        if (t == 3)
+            DfireRate += u;
+    }
+
+    public void upgrade_turn(float u, int t)
+    {
+        if (t == 1)
+            CturningSpeed += u;
+        if (t == 3)
+            DturningSpeed += u;
     }
 
     void ChangeAnimationState(string newState, Animator a)
@@ -163,6 +201,7 @@ public class WeaponsManager : MonoBehaviour
     public void taked(float d)
     {
         HP = HP - d;
+        UpdateHealth(HP / 100);
         if (HP <= 0)
         {
             //ass.clip = gothit;
@@ -178,7 +217,16 @@ public class WeaponsManager : MonoBehaviour
             Centertxt.text = "PRESS SPACEBAR TO RESTART";
             Destroy(gameObject, 0.10f);
         }
+    }
 
+    public void UpdateHealth(float fraction)
+    {
+        healthbar.fillAmount = fraction;
+    }
+
+    public void UpdateXP(float fraction)
+    {
+        XPbar.fillAmount = fraction;
     }
 }
 

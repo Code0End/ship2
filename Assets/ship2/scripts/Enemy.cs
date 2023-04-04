@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour {
     public enemySpawner enemySpawner;
 
     public float hp = 100f;
-    AudioSource ass;
+    public AudioSource ass;
     public AudioClip gothit;
 
     public WeaponsManager WM;
@@ -80,19 +80,15 @@ public class Enemy : MonoBehaviour {
     }
 
     public void taked(float d)
-    {
+    {        
         hp = hp - d;
         if (hp <= 0)
         {
             //ass.clip = gothit;
-            //ass.pitch = UnityEngine.Random.Range(0.2f, 0.6f);
-            //ass.Play();
-            //Debug.Log("DEATH");
-            //if (GameObject.FindGameObjectWithTag("text1") != null)
-            //{
-            //GameObject.FindGameObjectWithTag("text1").GetComponent<reloj>().updatenumenemies();
-            //}
-            //WM.Enemies.Remove(gameObject.GetComponent<Enemy>());
+            //ass.pitch = UnityEngine.Random.Range(0.95f, 1.05f);
+
+            AudioSource.PlayClipAtPoint(gothit,transform.position);
+
             GameObject newCoin = Instantiate(coin, new Vector3 (transform.position.x, 0.2f,transform.position.z), Quaternion.Euler(90, 0, 0));
             newCoin.transform.parent = GameObject.FindGameObjectWithTag("Coins").transform;
             Destroy(gameObject,0.10f);
