@@ -54,6 +54,8 @@ public class WeaponsManager : MonoBehaviour
     public Animator Canimator;
     public Animator Banimator;
 
+    public AudioClip hitSound;
+
     void Update()
     {
         if (CisActive == true)
@@ -228,8 +230,9 @@ public class WeaponsManager : MonoBehaviour
     {
         HP = HP - d;
         UpdateHealth(HP / 100);
-        if (HP <= 0)
-        {
+        AudioSource.PlayClipAtPoint(hitSound, transform.position);
+
+        if (HP <= 0) {
             //ass.clip = gothit;
             //ass.pitch = UnityEngine.Random.Range(0.2f, 0.6f);
             //ass.Play();

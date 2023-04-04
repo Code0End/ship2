@@ -20,9 +20,13 @@ public class Player : MonoBehaviour {
     private float currentXp = 0;
 
     private WeaponsManager weaponsManager;
+    private enemySpawner enemySpawner;
+
+    public AudioClip coinSound;
 
     private void Start() {
         weaponsManager = gameObject.GetComponentInParent<WeaponsManager>();
+        enemySpawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<enemySpawner>();
     }
 
     public void AddCoin() {
@@ -40,8 +44,9 @@ public class Player : MonoBehaviour {
 
             random_upgrade();
         }
-
+        AudioSource.PlayClipAtPoint(coinSound, transform.position);
         weaponsManager.UpdateXP(currentXp / requiredXp);
+
     }
 
     public void PauseGame()

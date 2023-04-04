@@ -19,7 +19,6 @@ public class Enemy : MonoBehaviour {
     public enemySpawner enemySpawner;
 
     public float hp = 100f;
-    public AudioSource ass;
     public AudioClip gothit;
 
     public WeaponsManager WM;
@@ -92,6 +91,7 @@ public class Enemy : MonoBehaviour {
             GameObject newCoin = Instantiate(coin, new Vector3 (transform.position.x, 0.2f,transform.position.z), Quaternion.Euler(90, 0, 0));
             newCoin.transform.parent = GameObject.FindGameObjectWithTag("Coins").transform;
             enemySpawner.currentEnemies--;
+            enemySpawner.enemiesKilled++;
             Destroy(gameObject,0.10f);
         }
         Knockback();
@@ -105,8 +105,7 @@ public class Enemy : MonoBehaviour {
         this.moveSpeed = moveSpeed;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
+    private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player"))
         {
             other.gameObject.GetComponent<WeaponsManager>().taked(damage);

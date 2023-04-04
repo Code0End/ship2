@@ -24,6 +24,15 @@ public class enemySpawner : MonoBehaviour
     public GameObject enemy;
     public Camera cam;
 
+    public int enemiesKilled = 0;
+    public int requiredEnemiesKilled = 10;
+
+    public int enemiesPerWaveIncrease;
+    public int maxEnemiesIncrease;
+    public int enemyDamageIncrease;
+    public float enemySpeedIncrease;
+
+
     void Start() {
         cam = Camera.main;
     }
@@ -37,6 +46,16 @@ public class enemySpawner : MonoBehaviour
             waveSpawnTimer = 1f;
             enemiesToSpawn = enemyPerWave;
             StartCoroutine(SpawnEnemies());
+        }
+
+        if(enemiesKilled >= requiredEnemiesKilled) {
+            requiredEnemiesKilled += requiredEnemiesKilled;
+            enemiesKilled = 0;
+
+            this.enemyPerWave += enemiesPerWaveIncrease;
+            this.maxEnemies += maxEnemiesIncrease;
+            this.damage += enemyDamageIncrease;
+            this.speed += enemySpeedIncrease;
         }
     }
 
@@ -73,21 +92,5 @@ public class enemySpawner : MonoBehaviour
 
             yield return new WaitForSeconds(enemySpawnDelay);
         }
-    }
-
-    public void SetEnemyPerWave(int enemies) {
-        this.enemyPerWave = enemies;
-    }
-
-    public void SetMaxEnemies(int enemies) {
-        this.maxEnemies = enemies;
-    }
-
-    public void SetDamage(int damage) {
-        this.damage = damage;
-    }
-
-    public void SetSpeed(int speed) {
-        this.speed = speed;
     }
 }
