@@ -54,7 +54,7 @@ public class WeaponsManager : MonoBehaviour
     public Animator Canimator;
     public Animator Banimator;
 
-    void Update()
+    void FixedUpdate()
     {
         if (CisActive == true)
         {
