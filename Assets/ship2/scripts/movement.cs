@@ -27,7 +27,7 @@ public class movement : MonoBehaviour
 
     public TMP_Text Centertxt;
     public bool ON = false;
-    private bool m = true;
+    public bool m = true;
 
     public Joystick joy;
 

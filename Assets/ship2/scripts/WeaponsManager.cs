@@ -11,6 +11,7 @@ public class WeaponsManager : MonoBehaviour
     public TMP_Text Centertxt;
     public Image healthbar;
     public Image XPbar;
+    public movement MV;
 
     public Player Preference;
 
@@ -243,7 +244,10 @@ public class WeaponsManager : MonoBehaviour
             //WM.Enemies.Remove(gameObject.GetComponent<Enemy>());
             Cam.transform.parent = null;
             CR.enabled = true;
-            Centertxt.text = "PRESS SPACEBAR TO RESTART";
+            if(MV.m == false)
+                Centertxt.text = "PRESS SPACEBAR TO RESTART";
+            else
+                Centertxt.text = "TOUCH TO RESTART";
             Destroy(gameObject, 0.10f);
         }
     }
