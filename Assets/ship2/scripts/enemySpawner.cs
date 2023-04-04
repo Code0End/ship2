@@ -6,7 +6,7 @@ public class enemySpawner : MonoBehaviour
 {
     private int spawnSide = 0;
     // Enemies to spawn per wave
-    private int enemyPerWave = 1;
+    public int enemyPerWave = 1;
     // Remaining enemies to spawn
     private int enemiesToSpawn;
 
