@@ -3456,6 +3456,7 @@ MonoBehaviour:
   - {fileID: 0}
   anchor_a: 1
   ballista_a: 1
+  coinSound: {fileID: 8300000, guid: 77b8e23d8ab4fe6429a6dfc9100e0a3e, type: 3}
 --- !u!1 &1514481999
 GameObject:
   m_ObjectHideFlags: 0
@@ -3568,7 +3569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPerWave: 1
-  enemySpawnDelay: 1
+  enemySpawnDelay: 0.5
   waveSpawnTimer: 3
   maxEnemies: 20
   currentEnemies: 0
@@ -3576,6 +3577,12 @@ MonoBehaviour:
   speed: 2
   enemy: {fileID: 5646171206500313912, guid: bea0c9b878215de4d84f2144527e5625, type: 3}
   cam: {fileID: 1016479799}
+  enemiesKilled: 0
+  requiredEnemiesKilled: 15
+  enemiesPerWaveIncrease: 3
+  maxEnemiesIncrease: 3
+  enemyDamageIncrease: 1
+  enemySpeedIncrease: 0.3
 --- !u!1 &1677991638
 GameObject:
   m_ObjectHideFlags: 0
@@ -3670,6 +3677,7 @@ MonoBehaviour:
   DfireRate: 0.8
   Canimator: {fileID: 2142869299}
   Banimator: {fileID: 1783634928}
+  hitSound: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
 --- !u!65 &1677991642
 BoxCollider:
   m_ObjectHideFlags: 0

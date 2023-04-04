@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
     public bool anchor_a = true;
     public bool ballista_a = true;
 
-    private float requiredXp = 10;
+    private float requiredXp = 5;
     private float currentXp = 0;
 
     private WeaponsManager weaponsManager;

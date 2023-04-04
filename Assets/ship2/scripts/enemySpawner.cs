@@ -49,7 +49,7 @@ public class enemySpawner : MonoBehaviour
         }
 
         if(enemiesKilled >= requiredEnemiesKilled) {
-            requiredEnemiesKilled += requiredEnemiesKilled;
+            //requiredEnemiesKilled += requiredEnemiesKilled;
             enemiesKilled = 0;
 
             this.enemyPerWave += enemiesPerWaveIncrease;
