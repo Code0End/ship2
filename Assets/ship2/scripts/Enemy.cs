@@ -97,8 +97,12 @@ public class Enemy : MonoBehaviour {
         Knockback();
     }
 
-    public void UpdateDamage(float damage) {
+    public void setDamage(float damage) {
         this.damage = damage;
+    }
+
+    public void setMoveSpeed(float moveSpeed) {
+        this.moveSpeed = moveSpeed;
     }
 
     private void OnTriggerEnter(Collider other)

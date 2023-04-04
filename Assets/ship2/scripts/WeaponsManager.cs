@@ -224,8 +224,7 @@ public class WeaponsManager : MonoBehaviour
         healthbar.fillAmount = fraction;
     }
 
-    public void UpdateXP(float fraction)
-    {
+    public void UpdateXP(float fraction) {
         XPbar.fillAmount = fraction;
     }
 }

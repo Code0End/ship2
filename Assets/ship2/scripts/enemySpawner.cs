@@ -62,8 +62,8 @@ public class enemySpawner : MonoBehaviour
             }
 
             // Set new Enemy move speed and damage
-            //newEnemy.GetComponent<Enemy>().setDamage(this.damage);
-            //newEnemy.GetComponent<Enemy>().setMoveSpeed(this.speed);
+            newEnemy.GetComponent<Enemy>().setDamage(this.damage);
+            newEnemy.GetComponent<Enemy>().setMoveSpeed(this.speed);
 
             currentEnemies++;
 
