@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Runtime.InteropServices;
 
 public class movement : MonoBehaviour
 {
@@ -26,16 +27,35 @@ public class movement : MonoBehaviour
 
     public TMP_Text Centertxt;
     public bool ON = false;
+    private bool m = true;
+
+    public Joystick joy;
 
     private void Start()
     {
         //animator = GetComponent<Animator>();
         animator = GetComponentInChildren<Animator>();
+        if (isMobile() == true)
+        {
+            m = true;
+            Centertxt.text = "TOUCH SCREEN TO PLAY";
+        }
+        else
+        {
+            m = false;
+            joy.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Centertxt.text = "";
+            ON = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Centertxt.text = "";
             ON = true;
@@ -49,8 +69,18 @@ public class movement : MonoBehaviour
         
         if (!isMoving)
         {
-            input.x = Input.GetAxisRaw("Horizontal");
-            input.y = Input.GetAxisRaw("Vertical");
+
+            if(m == false)
+            {
+                input.x = Input.GetAxisRaw("Horizontal");
+                input.y = Input.GetAxisRaw("Vertical");
+            }
+            else
+            {
+                input.x = joy.Horizontal;
+                input.y = joy.Vertical;
+            }
+            
 
             if (input != Vector2.zero)
             {
@@ -62,7 +92,11 @@ public class movement : MonoBehaviour
                 savedY = input.y;
 
                 StartCoroutine(Move(targetPos));
-                checkDirection(input.x, input.y);
+
+                if(m == false)
+                    checkDirection(input.x, input.y);
+                else
+                    checkMDirection(input.x, input.y);
             }
             else{
                 checkDirection(savedX, savedY);
@@ -136,4 +170,62 @@ public class movement : MonoBehaviour
             return;
         }
     }
+
+    void checkMDirection(float x, float y)
+    {
+        if (x >= 1 && y < 1 && y > -1)
+        {
+            ChangeAnimationState(PE);
+            return;
+        }
+        if (x >= -1 && y < 1 && y > -1)
+        {
+            ChangeAnimationState(PO);
+            return;
+        }
+
+        if (y >= 1 && x < 1 && x > -1)
+        {
+            ChangeAnimationState(PN);
+            return;
+        }
+        if (y >= -1 && x < 1 && x > -1)
+        {
+            ChangeAnimationState(PS);
+            return;
+        }
+
+        if (x >= 1 && y >= 1)
+        {
+            ChangeAnimationState(PNO);
+            return;
+        }
+        if (x >= 1 && y >= -1)
+        {
+            ChangeAnimationState(PSO);
+            return;
+        }
+        if (x >= -1 && y >= 1)
+        {
+            ChangeAnimationState(PNE);
+            return;
+        }
+        if (x >= -1 && y >= -1)
+        {
+            ChangeAnimationState(PSE);
+            return;
+        }
+    }
+
+    [DllImport("__Internal")]
+    private static extern bool IsMobile();
+
+    public bool isMobile()
+    {
+#if !UNITY_EDITOR && UNITY_WEBGL
+         return IsMobile();
+#endif
+        return false;
+    }
+
 }

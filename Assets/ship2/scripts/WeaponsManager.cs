@@ -56,7 +56,7 @@ public class WeaponsManager : MonoBehaviour
 
     public AudioClip hitSound;
 
-    void Update()
+    void FixedUpdate()
     {
         if (CisActive == true)
         {
