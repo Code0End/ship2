@@ -21,7 +21,6 @@ public class enemySpawner : MonoBehaviour
     public float damage = 20f;
     public float speed = 2f;
 
-    public GameObject enemy;
     public Camera cam;
 
     public int enemiesKilled = 0;
@@ -32,6 +31,7 @@ public class enemySpawner : MonoBehaviour
     public int enemyDamageIncrease;
     public float enemySpeedIncrease;
 
+    public GameObject[] enemies;
 
     void Start() {
         cam = Camera.main;
@@ -61,11 +61,25 @@ public class enemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemies() {
         while (enemiesToSpawn > 0) {
-            if(currentEnemies >= maxEnemies) {
+            if (currentEnemies >= maxEnemies) {
                 yield return new WaitForSeconds(enemySpawnDelay);
                 break;
             }
+
+            float prob = Random.Range(0f, 1f);
+            int index;
+
+            if(prob <= 0.7f) {
+                index = 0;
+            } else if(prob <= 0.9f) {
+                index = 1;
+            } else {
+                index = 2;
+            }
+
+            GameObject enemy = enemies[index];
             GameObject newEnemy;
+
             Vector3 camPos = cam.transform.position;
             if (spawnSide == 0) { // Left
                 newEnemy = Instantiate(enemy, new Vector3(camPos.x + Random.Range(-15, -30), 0.5f, camPos.z + Random.Range(-15, 15)), Quaternion.Euler(90, 0, 0));
@@ -81,8 +95,8 @@ public class enemySpawner : MonoBehaviour
             }
 
             // Set new Enemy move speed and damage
-            newEnemy.GetComponent<Enemy>().setDamage(this.damage);
-            newEnemy.GetComponent<Enemy>().setMoveSpeed(this.speed);
+            newEnemy.GetComponent<Enemy>().addDamage(this.damage);
+            newEnemy.GetComponent<Enemy>().addMoveSpeed(this.speed);
 
             currentEnemies++;
 

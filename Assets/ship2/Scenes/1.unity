@@ -3575,7 +3575,6 @@ MonoBehaviour:
   currentEnemies: 0
   damage: 20
   speed: 2
-  enemy: {fileID: 5646171206500313912, guid: bea0c9b878215de4d84f2144527e5625, type: 3}
   cam: {fileID: 1016479799}
   enemiesKilled: 0
   requiredEnemiesKilled: 15
@@ -3583,6 +3582,10 @@ MonoBehaviour:
   maxEnemiesIncrease: 3
   enemyDamageIncrease: 1
   enemySpeedIncrease: 0.3
+  enemies:
+  - {fileID: 5646171206500313912, guid: bea0c9b878215de4d84f2144527e5625, type: 3}
+  - {fileID: 5646171206500313912, guid: 9855b34d8db9c5d47b3ba9e9aa0b6ede, type: 3}
+  - {fileID: 5646171206500313912, guid: 79fb84bcc391dd147a9156388e048c33, type: 3}
 --- !u!1 &1677991638
 GameObject:
   m_ObjectHideFlags: 0
