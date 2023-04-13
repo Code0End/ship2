@@ -31,7 +31,7 @@ public class Player : MonoBehaviour {
 
     public void AddCoin() {
         this.coins++;
-        coinText.text = String.Concat("Coins: ", this.coins);
+        coinText.text = String.Concat(this.coins);
 
         this.currentXp++;
 

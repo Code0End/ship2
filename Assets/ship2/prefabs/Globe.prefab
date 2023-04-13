@@ -124,7 +124,7 @@ MonoBehaviour:
   followDelay: 2
   strenght: 0.2
   coin: {fileID: 655485128217197943, guid: e849ca2408bdb494ab7b48fc0c5c5045, type: 3}
-  damage: 15
+  damage: 10
   enemySpawner: {fileID: 0}
   hp: 100
   gothit: {fileID: 8300000, guid: 85387dae1a7aed54b9b5c57f94bf2dea, type: 3}

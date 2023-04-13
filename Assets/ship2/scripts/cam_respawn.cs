@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class cam_respawn : MonoBehaviour
 {
+
+    private float lasclicktime;
+    private const float doubleclicktime = .2f;
     // Update is called once per frame
     void Update()
     {
@@ -14,7 +17,17 @@ public class cam_respawn : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            float timesincelastclick = Time.time - lasclicktime;
+
+            if(timesincelastclick <= doubleclicktime)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            else
+            {
+
+            }
+            lasclicktime = Time.time;
         }
     }
 }

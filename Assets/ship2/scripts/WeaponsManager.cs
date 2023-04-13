@@ -57,6 +57,9 @@ public class WeaponsManager : MonoBehaviour
 
     public AudioClip hitSound;
 
+    [SerializeField]
+    private Leaderboard LB;
+
     void FixedUpdate()
     {
         if (CisActive == true)
@@ -234,20 +237,13 @@ public class WeaponsManager : MonoBehaviour
         AudioSource.PlayClipAtPoint(hitSound, transform.position);
 
         if (HP <= 0) {
-            //ass.clip = gothit;
-            //ass.pitch = UnityEngine.Random.Range(0.2f, 0.6f);
-            //ass.Play();
-            //if (GameObject.FindGameObjectWithTag("text1") != null)
-            //{
-            //GameObject.FindGameObjectWithTag("text1").GetComponent<reloj>().updatenumenemies();
-            //}
-            //WM.Enemies.Remove(gameObject.GetComponent<Enemy>());
             Cam.transform.parent = null;
             CR.enabled = true;
+            LB.wake_up();
             if(MV.m == false)
                 Centertxt.text = "PRESS SPACEBAR TO RESTART";
             else
-                Centertxt.text = "TOUCH TO RESTART";
+                Centertxt.text = "DOUBLE TOUCH TO RESTART";
             Destroy(gameObject, 0.10f);
         }
     }
